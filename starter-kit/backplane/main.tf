@@ -75,9 +75,11 @@ resource "meshstack_building_block_definition" "starter_kit" {
       }
     }
 
-    # PLATFORMINSTANCE_LIST/LANDINGZONE_LIST: needed to look up the target STACKIT platform/landing
-    # zone. TENANT_SAVE: needed to create the qa/prod tenants. BUILDINGBLOCK_SAVE: needed to order
-    # the STACKIT Project Creation instances against them.
-    permissions = ["PLATFORMINSTANCE_LIST", "LANDINGZONE_LIST", "TENANT_SAVE", "BUILDINGBLOCK_SAVE"]
+    # PROJECT_SAVE: needed to create the qa/prod meshProjects. PLATFORMINSTANCE_LIST/LANDINGZONE_LIST:
+    # needed to look up the target STACKIT platform/landing zone. TENANT_SAVE: needed to create the
+    # qa/prod tenants. BUILDINGBLOCK_SAVE: needed to order the STACKIT Project Creation instances
+    # against them. This is the set of workspace permissions granted via the ephemeral API key
+    # meshStack issues to each run of this building block.
+    permissions = ["PROJECT_SAVE", "PLATFORMINSTANCE_LIST", "LANDINGZONE_LIST", "TENANT_SAVE", "BUILDINGBLOCK_SAVE"]
   }
 }
