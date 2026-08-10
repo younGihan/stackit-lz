@@ -45,6 +45,8 @@ resource "meshstack_tenant" "qa" {
     platform_ref     = local.stackit_platform.ref
     landing_zone_ref = local.qa_landing_zone.ref
   }
+  wait_for_completion = false
+
 }
 
 resource "meshstack_tenant" "prod" {
@@ -57,6 +59,8 @@ resource "meshstack_tenant" "prod" {
     platform_ref     = local.stackit_platform.ref
     landing_zone_ref = local.prod_landing_zone.ref
   }
+  wait_for_completion = false
+
 }
 
 # project_name and workspace_identifier are PROJECT_IDENTIFIER / WORKSPACE_IDENTIFIER inputs on the
