@@ -7,7 +7,10 @@ resource "meshstack_project" "qa" {
   spec = {
     display_name = "QA"
     tags = {
-      environment = ["qa"]
+      environment          = ["qa"]
+      projectOwner         = ["Anna Admin"]
+      LandingZoneClearance = ["cloud-native"]
+      Schutzbedarf         = ["public"]
     }
   }
 }
@@ -21,7 +24,10 @@ resource "meshstack_project" "prod" {
   spec = {
     display_name = "Prod"
     tags = {
-      environment = ["prod"]
+      environment          = ["prod"]
+      projectOwner         = ["Anna Admin"]
+      LandingZoneClearance = ["cloud-native"]
+      Schutzbedarf         = ["public"]
     }
   }
 }
