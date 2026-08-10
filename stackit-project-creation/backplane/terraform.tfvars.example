@@ -4,7 +4,7 @@ workspace_identifier = "my-platform-team-workspace"
 
 # Push this repo somewhere meshStack can clone it, then point these at it.
 bbd_repository_url  = "https://github.com/my-org/stackit-lz.git"
-bbd_repository_path = "buildingblock/stackit-project-creation"
+bbd_repository_path = "stackit-project-creation/buildingblock"
 bbd_ref_name         = "main"
 bbd_draft            = true
 

@@ -1,5 +1,5 @@
-# Registers ../.. (buildingblock/starter-kit) as an orderable building block: creates a qa and a
-# prod meshProject and orders a STACKIT Project Creation instance for each. The STACKIT Project
+# Registers ../buildingblock (starter-kit/buildingblock) as an orderable building block: creates a
+# qa and a prod meshProject and orders a STACKIT Project Creation instance for each. The STACKIT Project
 # Creation version to order against is baked in as a STATIC input, since starter-kit's own
 # Terraform run has no other way to discover it (separate state, separate backplane).
 resource "meshstack_building_block_definition" "starter_kit" {
@@ -43,6 +43,22 @@ resource "meshstack_building_block_definition" "starter_kit" {
         assignment_type = "STATIC"
         argument        = jsonencode(var.stackit_project_creation_bb_version_uuid)
       }
+
+      stackit_platform_identifier = {
+        display_name    = "STACKIT Platform Identifier"
+        description     = "Full identifier (<platform-name>.<location-name>) of the already-existing STACKIT platform to create the qa/prod tenants on."
+        type            = "STRING"
+        assignment_type = "STATIC"
+        argument        = jsonencode(var.stackit_platform_identifier)
+      }
+
+      stackit_landing_zone_name = {
+        display_name    = "STACKIT Landing Zone Name"
+        description     = "Name of the landing zone (on stackit_platform_identifier) to assign the qa/prod tenants to. Leave unset to create tenants without a landing zone."
+        type            = "STRING"
+        assignment_type = "STATIC"
+        argument        = jsonencode(var.stackit_landing_zone_name)
+      }
     }
 
     outputs = {
@@ -58,5 +74,10 @@ resource "meshstack_building_block_definition" "starter_kit" {
         assignment_type = "NONE"
       }
     }
+
+    # PLATFORMINSTANCE_LIST/LANDINGZONE_LIST: needed to look up the target STACKIT platform/landing
+    # zone. TENANT_SAVE: needed to create the qa/prod tenants. BUILDINGBLOCK_SAVE: needed to order
+    # the STACKIT Project Creation instances against them.
+    permissions = ["PLATFORMINSTANCE_LIST", "LANDINGZONE_LIST", "TENANT_SAVE", "BUILDINGBLOCK_SAVE"]
   }
 }

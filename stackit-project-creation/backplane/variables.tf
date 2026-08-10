@@ -16,7 +16,7 @@ variable "bbd_repository_url" {
 
 variable "bbd_repository_path" {
   type        = string
-  default     = "buildingblock/stackit-project-creation"
+  default     = "stackit-project-creation/buildingblock"
   nullable    = false
   description = "Path within bbd_repository_url to the stackit-project-creation module."
 }

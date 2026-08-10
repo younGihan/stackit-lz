@@ -33,11 +33,13 @@ terraform init
 terraform apply -var-file=terraform.tfvars
 ```
 
-As a meshStack building block, `workspace_identifier` is wired to `WORKSPACE_IDENTIFIER` and
-`project_name` is a `USER_INPUT`; the rest are `STATIC` platform-team inputs (see
-`meshcloud/meshstack-hub`'s `modules/stackit/project/buildingblock` for the general pattern this
-template follows). `backplane/` registers exactly this in meshStack - run it once, then order
-instances (see `../starter-kit` for an example consumer).
+As a meshStack building block (`TENANT_LEVEL`), `workspace_identifier` is wired to
+`WORKSPACE_IDENTIFIER` and `project_name` to `PROJECT_IDENTIFIER` (both auto-derived from the
+target tenant); the rest are `STATIC` platform-team inputs (see `meshcloud/meshstack-hub`'s
+`modules/stackit/project/buildingblock` for the general pattern this template follows).
+`../backplane/` registers exactly this in meshStack - run it once, then order instances against a
+STACKIT tenant (see `../../starter-kit/buildingblock` for an example consumer - note it currently
+targets a workspace, not a tenant, and needs updating to match).
 
 ## Known limitation
 

@@ -4,7 +4,7 @@ Demo/bootstrap template: creates two meshProjects (`qa` tagged `environment = qa
 `environment = prod`) in a workspace, then orders a STACKIT Project Creation instance against each.
 
 This directory can be applied directly, or run itself as a meshStack building block via
-`backplane/` (see below).
+`../backplane/` (see below).
 
 ## What it does
 
@@ -12,13 +12,14 @@ This directory can be applied directly, or run itself as a meshStack building bl
 2. Orders one `meshstack_building_block` instance per project against the already-registered
    **STACKIT Project Creation** building block version (`stackit_project_creation_bb_version_uuid`),
    each setting `project_name` to that project's name — this is what actually triggers
-   `../stackit-project-creation` to run and create the STACKIT project + network range.
+   `../../stackit-project-creation/buildingblock` to run and create the STACKIT project + network range.
 
 ## Prerequisites
 
-- `../stackit-project-creation/backplane` must already be applied - grab its
+- `../../stackit-project-creation/backplane` must already be applied - grab its
   `building_block_definition_version_uuid` output for `stackit_project_creation_bb_version_uuid`.
-- The three SNAs (prod/qa/test) already exist in STACKIT — see `../stackit-project-creation/README.md`.
+- The three SNAs (prod/qa/test) already exist in STACKIT — see
+  `../../stackit-project-creation/buildingblock/README.md`.
 
 ## Usage
 
@@ -33,6 +34,6 @@ meshStack UI, to see the created STACKIT projects.
 
 ## Running this as an orderable building block instead
 
-`backplane/` registers this directory itself as a building block ("STACKIT QA+Prod Bootstrap"), so
-an app team can order the whole qa+prod bootstrap flow instead of you needing to `terraform apply`
-this directory by hand each time. See `backplane/README.md`.
+`../backplane/` registers this directory itself as a building block ("STACKIT QA+Prod Bootstrap"),
+so an app team can order the whole qa+prod bootstrap flow instead of you needing to
+`terraform apply` this directory by hand each time. See `../backplane/README.md`.

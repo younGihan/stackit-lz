@@ -1,15 +1,17 @@
-# Registers ../.. (buildingblock/stackit-project-creation) as an orderable building block. Only
-# project_name varies per instance - everything else is static platform configuration baked into
-# this version. See ../../starter-kit/backplane for an example consumer.
+# Registers ../buildingblock (stackit-project-creation/buildingblock) as an orderable building
+# block, targetable at a STACKIT tenant. project_name is derived from the target tenant's owning
+# project - everything else is static platform configuration baked into this version.
+# See ../../starter-kit/backplane for an example consumer.
 resource "meshstack_building_block_definition" "stackit_project_creation" {
   metadata = {
     owned_by_workspace = var.workspace_identifier
   }
 
   spec = {
-    display_name = "STACKIT Project Creation"
-    description  = "Creates a STACKIT project in the SNA matching the meshProject's environment tag, allocating it its own network range."
-    target_type  = "WORKSPACE_LEVEL"
+    display_name        = "STACKIT Project Creation"
+    description         = "Creates a STACKIT project in the SNA matching the meshProject's environment tag, allocating it its own network range."
+    target_type         = "TENANT_LEVEL"
+    supported_platforms = [{ name = "STACKIT" }]
   }
 
   version_spec = {
@@ -37,9 +39,9 @@ resource "meshstack_building_block_definition" "stackit_project_creation" {
 
       project_name = {
         display_name    = "Project Name"
-        description     = "Name of the meshProject to create the STACKIT project for."
+        description     = "Name of the meshProject to create the STACKIT project for, derived from the target tenant's owning project."
         type            = "STRING"
-        assignment_type = "USER_INPUT"
+        assignment_type = "PROJECT_IDENTIFIER"
       }
 
       sna_network_area_ids = {
@@ -106,5 +108,8 @@ resource "meshstack_building_block_definition" "stackit_project_creation" {
         assignment_type = "NONE"
       }
     }
+
+    # PROJECT_LIST: needed by the data.meshstack_project lookup that reads the environment tag.
+    permissions = ["PROJECT_LIST"]
   }
 }

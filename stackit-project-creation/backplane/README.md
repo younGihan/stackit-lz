@@ -1,12 +1,14 @@
 # STACKIT Project Creation - Backplane
 
-Registers `../` (the stackit-project-creation Terraform implementation) as a meshStack building
-block definition ("STACKIT Project Creation", `WORKSPACE_LEVEL`). Run once by the platform team
-per environment/setup; app teams (or other building blocks) then order instances of it.
+Registers `../buildingblock` (the stackit-project-creation Terraform implementation) as a
+meshStack building block definition ("STACKIT Project Creation", `TENANT_LEVEL`). Run once by the
+platform team per environment/setup; app teams (or other building blocks) then order instances of
+it against a STACKIT tenant.
 
-Only `project_name` is left as a per-instance input (`USER_INPUT`). Everything else - the SNA IDs,
-the environments' base CIDRs, and the STACKIT organization/owner/service-account details - is
-baked into the registered version as `STATIC` inputs.
+`project_name` is auto-derived from the target tenant's owning project (`PROJECT_IDENTIFIER`), and
+`workspace_identifier` from that tenant's owning workspace (`WORKSPACE_IDENTIFIER`). Everything
+else - the SNA IDs, the environments' base CIDRs, and the STACKIT organization/owner/service-account
+details - is baked into the registered version as `STATIC` inputs.
 
 ## Usage
 

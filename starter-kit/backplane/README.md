@@ -1,6 +1,6 @@
 # Starter Kit - Backplane
 
-Registers `../` (the starter-kit Terraform implementation) as a meshStack building block
+Registers `../buildingblock` (the starter-kit Terraform implementation) as a meshStack building block
 definition ("STACKIT QA+Prod Bootstrap", `WORKSPACE_LEVEL`), so the qa+prod provisioning flow can
 be ordered like any other building block instead of only being run as a raw `terraform apply`.
 
