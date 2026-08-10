@@ -10,7 +10,10 @@ locals {
   # stackit_resourcemanager_project.this (main.tf) is what actually blocks that case from applying.
   stackit_project_name = "${var.workspace_identifier}.${var.project_name}.${coalesce(local.environment, "unknown")}"
 
-  network_range_override_set = var.network_range_override != null && trimspace(var.network_range_override) != ""
+  # coalesce(..., "") avoids calling trimspace(null): HCL's && is not short-circuiting, so
+  # `var.network_range_override != null && trimspace(var.network_range_override) != ""` would
+  # still evaluate trimspace(null) and crash even though the left-hand side is false.
+  network_range_override_set = trimspace(coalesce(var.network_range_override, "")) != ""
 
   # Everything below only needs to resolve when we're actually about to create a project -
   # the precondition on stackit_resourcemanager_project.this (main.tf) is what actually blocks
