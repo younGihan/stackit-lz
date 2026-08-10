@@ -1,0 +1,7 @@
+# Copy to terraform.tfvars (or pass via -var-file / -var) and fill in real values.
+
+workspace_identifier = "my-workspace"
+
+# From `terraform output building_block_definition_version_uuid` in
+# ../stackit-project-creation/backplane, after applying it.
+stackit_project_creation_bb_version_uuid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"

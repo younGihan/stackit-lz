@@ -1,0 +1,35 @@
+# Copy to terraform.tfvars (or pass via -var-file / -var) and fill in real values.
+
+# ── meshStack trigger context ──
+workspace_identifier = "my-workspace"
+project_name         = "my-project"
+
+# ── Environment -> SNA mapping ──
+environment_tag_name = "environment" # meshProject tag read to pick prod/qa/test below
+
+sna_network_area_ids = {
+  prod = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  qa   = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"
+  test = "zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz"
+}
+
+# Supernet each environment's SNA carves new /24s (or network_prefix_length) from.
+network_base_cidrs = {
+  prod = "10.10.0.0/16"
+  qa   = "10.20.0.0/16"
+  test = "10.30.0.0/16"
+}
+
+network_prefix_length = 24
+
+# Uncomment to reuse an existing range instead of computing a new one:
+# network_range_override = "10.10.2.0/24"
+
+# ── STACKIT ──
+stackit_organization_id       = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+stackit_parent_container_id   = "example-parent-container-abc123"
+stackit_owner_email           = "owner@example.com"
+stackit_service_account_email = "mesh-automation@sa.stackit.cloud"
+stackit_region                = "eu01"
+
+additional_project_labels = {}
