@@ -6,6 +6,6 @@ workspace_identifier = "my-workspace"
 # ../../stackit-project-creation/backplane, after applying it.
 stackit_project_creation_bb_version_uuid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
-# Already-existing STACKIT platform the qa/prod tenants are created on.
+# Already-existing STACKIT platform the qa/prod tenants are created on. The landing zone per
+# environment is hardcoded ("qa" / "prod") in the implementation, not configurable here.
 stackit_platform_identifier = "stackit.global"
-# stackit_landing_zone_name  = "my-landing-zone"

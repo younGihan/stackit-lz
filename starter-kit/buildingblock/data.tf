@@ -2,9 +2,13 @@ data "meshstack_platforms" "stackit" {
   identifier = var.stackit_platform_identifier
 }
 
-data "meshstack_landingzones" "stackit" {
-  count = var.stackit_landing_zone_name != null ? 1 : 0
-
+# Landing zone per environment is hardcoded, not configurable - see locals.landing_zone_names.
+data "meshstack_landingzones" "qa" {
   platform_uuid = local.stackit_platform.metadata.uuid
-  identifier    = var.stackit_landing_zone_name
+  identifier    = local.landing_zone_names.qa
+}
+
+data "meshstack_landingzones" "prod" {
+  platform_uuid = local.stackit_platform.metadata.uuid
+  identifier    = local.landing_zone_names.prod
 }

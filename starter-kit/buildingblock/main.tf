@@ -33,8 +33,8 @@ resource "meshstack_project" "prod" {
 }
 
 # STACKIT Project Creation is TENANT_LEVEL, so each project needs its own tenant to attach the
-# building block to. platform_ref/landing_zone_ref come from the already-existing STACKIT platform
-# looked up in data.tf.
+# building block to. platform_ref comes from the already-existing STACKIT platform looked up in
+# data.tf; landing_zone_ref is hardcoded per environment - see locals.landing_zone_names.
 resource "meshstack_tenant" "qa" {
   metadata = {
     owned_by_workspace = var.workspace_identifier
@@ -43,7 +43,7 @@ resource "meshstack_tenant" "qa" {
 
   spec = {
     platform_ref     = local.stackit_platform.ref
-    landing_zone_ref = local.stackit_landing_zone != null ? local.stackit_landing_zone.ref : null
+    landing_zone_ref = local.qa_landing_zone.ref
   }
 }
 
@@ -55,7 +55,7 @@ resource "meshstack_tenant" "prod" {
 
   spec = {
     platform_ref     = local.stackit_platform.ref
-    landing_zone_ref = local.stackit_landing_zone != null ? local.stackit_landing_zone.ref : null
+    landing_zone_ref = local.prod_landing_zone.ref
   }
 }
 

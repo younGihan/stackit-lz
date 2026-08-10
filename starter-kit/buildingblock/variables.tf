@@ -13,11 +13,5 @@ variable "stackit_project_creation_bb_version_uuid" {
 variable "stackit_platform_identifier" {
   type        = string
   nullable    = false
-  description = "Full identifier (<platform-name>.<location-name>) of the already-existing STACKIT platform to create the qa/prod tenants on."
-}
-
-variable "stackit_landing_zone_name" {
-  type        = string
-  default     = null
-  description = "Name of the landing zone (on stackit_platform_identifier) to assign the qa/prod tenants to. Optional - leave null to create tenants without a landing zone."
+  description = "Full identifier (<platform-name>.<location-name>) of the already-existing STACKIT platform to create the qa/prod tenants on. The landing zone per environment is hardcoded (see locals.landing_zone_names)."
 }
