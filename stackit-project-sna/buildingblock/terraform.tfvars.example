@@ -1,0 +1,18 @@
+# Copy to terraform.tfvars (or pass via -var-file / -var) and fill in real values.
+
+workspace_identifier = "my-workspace"
+project_name         = "my-project"
+
+environment_tag_name = "environment"
+
+sna_network_area_ids = {
+  prod = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  dev  = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"
+}
+
+stackit_parent_container_id   = "example-parent-container-abc123"
+stackit_owner_email           = "owner@example.com"
+stackit_service_account_email = "mesh-automation@sa.stackit.cloud"
+stackit_region                = "eu01"
+
+additional_project_labels = {}

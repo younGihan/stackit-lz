@@ -1,0 +1,10 @@
+# Copy to terraform.tfvars (or pass via -var-file / -var) and fill in real values.
+
+project_id            = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+network_name          = "default"
+network_prefix_length = 24
+routed                = true
+ipv4_nameservers      = []
+
+stackit_service_account_email = "mesh-automation@sa.stackit.cloud"
+stackit_region                = "eu01"

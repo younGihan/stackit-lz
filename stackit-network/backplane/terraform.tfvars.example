@@ -1,0 +1,11 @@
+# Copy to terraform.tfvars (or pass via -var-file / -var) and fill in real values.
+
+workspace_identifier = "my-platform-team-workspace"
+
+# Push this repo somewhere meshStack can clone it, then point these at it.
+bbd_repository_url  = "https://github.com/my-org/stackit-lz.git"
+bbd_repository_path = "stackit-network/buildingblock"
+bbd_ref_name         = "main"
+bbd_draft            = true
+
+stackit_service_account_email = "mesh-automation@sa.stackit.cloud"

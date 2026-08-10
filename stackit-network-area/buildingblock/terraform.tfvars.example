@@ -1,0 +1,9 @@
+# Copy to terraform.tfvars (or pass via -var-file / -var) and fill in real values.
+
+network_area_name = "prod"
+organization_id   = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+labels = {}
+
+stackit_service_account_email = "mesh-automation@sa.stackit.cloud"
+stackit_region                = "eu01"
