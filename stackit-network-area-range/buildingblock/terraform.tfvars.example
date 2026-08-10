@@ -1,0 +1,13 @@
+# Copy to terraform.tfvars (or pass via -var-file / -var) and fill in real values.
+
+network_area_id   = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+network_base_cidr = "10.10.0.0/16"
+
+network_prefix_length = 24
+
+# Uncomment to add/reuse a specific range instead of computing the next one:
+# network_range_override = "10.10.2.0/24"
+
+organization_id               = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+stackit_service_account_email = "mesh-automation@sa.stackit.cloud"
+stackit_region                = "eu01"
